@@ -1,0 +1,37 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.current-day,
+.current-time {
+  position: relative;
+  animation: change-color 3s linear infinite;
+}
+
+@keyframes change-color {
+  0% {
+    background-color: yellow;
+  }
+  33% {
+    background-color: lightgreen;
+  }
+  66% {
+    background-color: lightblue;
+  }
+  100% {
+    background-color: yellow;
+  }
+}
