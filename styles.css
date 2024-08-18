@@ -19,11 +19,11 @@ footer {
 
 header {
   flex-shrink: 0;
-  text-align: center;
+  text-align: left;
   display: flex;
-  align-items: center; /* Align items vertically in the center */
+  /* align-items: center; */
   /* margin-bottom: 1rem; */
-  padding-bottom: 0.5rem;
+  /* padding-bottom: 0.5rem; */
   font-weight: 600;
 }
 
@@ -34,10 +34,18 @@ header div img {
   border-radius: 100px;
 }
 
-#current-date-time {
+#profile-image-container {
+  text-align: center;
+  flex: 2;
+}
+
+#current-date-time-container {
+  flex: 8;
   padding: 2rem;
   font-size: 1rem;
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
+  /* background-color: red; */
+  align-items: left;
 }
 
 table {

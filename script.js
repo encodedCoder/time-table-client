@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function highlightCurrentTimeSlot() {
-    // const currentTimeSlot = getCurrentTimeSlot();
+    const currentTimeSlot = getCurrentTimeSlot();
     // const currentTimeSlot = 2;
     if (currentTimeSlot !== -1) {
       const currentDay = getCurrentDay();
@@ -146,15 +146,24 @@ function updateTime() {
   let dateTimeString = time + " | " + day + " | " + fullDate;
 
   // Update the content of the element with id "current-date-time"
-  let dateTimeElement = document.getElementById("current-date-time");
-  dateTimeElement.innerText = dateTimeString;
+  let currentDateTimeContainer = document.getElementById(
+    "current-date-time-container"
+  );
+  let currentTimeElement = document.getElementById("current-time");
+  let currentDayElement = document.getElementById("current-day");
+  let currentDateElement = document.getElementById("current-date");
+
+  currentTimeElement.innerText = time;
+  currentDayElement.innerText = day;
+  currentDateElement.innerText = fullDate;
+
   // Change background color if the day is Saturday or Sunday
   // day = "Monday";
   if (day === "Sat" || day === "Sun") {
-    dateTimeElement.style.backgroundColor = "rgb(212, 86, 28)";
+    currentDateTimeContainer.style.backgroundColor = "rgb(212, 86, 28)";
   } else {
     // Reset to default if not
-    dateTimeElement.style.backgroundColor = "rgb(103, 138, 32)";
+    currentDateTimeContainer.style.backgroundColor = "rgb(103, 138, 32)";
   }
 }
 
