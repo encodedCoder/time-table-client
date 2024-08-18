@@ -74,11 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function highlightCurrentDay() {
     const currentDay = getCurrentDay();
     // const currentDay = 2;
-    if (currentDay === -1) return;
-    const dayHeader = scheduleTable.querySelector(
-      `th:nth-child(${currentDay + 2})`
-    );
-    dayHeader.classList.add("current-day");
+    if (currentDay !== -1) {
+      const dayHeader = scheduleTable.querySelector(
+        `th:nth-child(${currentDay + 2})`
+      );
+      dayHeader.classList.add("current-day");
+    }
   }
 
   function highlightCurrentTimeSlot() {
@@ -86,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // const currentTimeSlot = 2;
     if (currentTimeSlot !== -1) {
       const currentDay = getCurrentDay();
+      // const currentDay = 0;
       const timeSlotCell = scheduleTable.querySelector(
         `tbody tr:nth-child(${currentTimeSlot + 1}) td:nth-child(${
           currentDay + 2
@@ -96,6 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       timeSlotCell.classList.add("current-time");
       timeSlotHeader.classList.add("current-time");
+      // console.log(timeSlotCell);
+      // console.log(timeSlotHeader);
     }
   }
 
