@@ -126,15 +126,7 @@ function updateTime() {
   let time = hours + ":" + minutes + ":" + seconds;
 
   // Get the current day (0 = Sunday, 1 = Monday, etc.)
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[currentDate.getDay()];
 
   // Get the current date (day of the month, month, year)
@@ -149,14 +141,14 @@ function updateTime() {
   let fullDate = date + "/" + month + "/" + year;
 
   // Combine the time, day, and date into a single string
-  let dateTimeString = time + " || " + day + " || " + fullDate;
+  let dateTimeString = time + " | " + day + " | " + fullDate;
 
   // Update the content of the element with id "current-date-time"
   let dateTimeElement = document.getElementById("current-date-time");
   dateTimeElement.innerText = dateTimeString;
   // Change background color if the day is Saturday or Sunday
   // day = "Monday";
-  if (day === "Saturday" || day === "Sunday") {
+  if (day === "Sat" || day === "Sun") {
     dateTimeElement.style.backgroundColor = "red";
   } else {
     // Reset to default if not

@@ -26,12 +26,12 @@ header img {
 }
 
 header h3 {
-  margin: 0; /* Remove default margin of h3 to avoid extra space */
+  margin: 0;
 }
 
 #current-date-time {
   padding: 2rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
 }
 
