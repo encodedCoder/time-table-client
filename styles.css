@@ -1,34 +1,37 @@
 /* styles.css */
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  /* height: 100%; */
 }
 
 html,
 body {
-  height: 100%; /* Ensure the html and body elements cover the full height */
-  margin: 0; /* Remove any default margin */
-  padding: 0; /* Remove any default padding */
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  /* padding: 0.5rem; */
+}
+
+header,
+footer {
+  background-color: yellowgreen;
 }
 
 header {
-  background-color: yellowgreen;
+  flex-shrink: 0;
+  text-align: center;
   display: flex;
   align-items: center; /* Align items vertically in the center */
   /* margin-bottom: 1rem; */
+  padding-bottom: 0.5rem;
+  font-weight: 600;
 }
 
-header img {
+header div img {
   padding: 1rem;
+  padding-bottom: 0.3rem;
   height: 6rem;
-  /* border-radius: 100px; */
-  /* border-color: black; */
-  /* margin-right: 20px; */
-}
-
-header h3 {
-  margin: 0;
+  border-radius: 100px;
 }
 
 #current-date-time {
@@ -38,6 +41,7 @@ header h3 {
 }
 
 table {
+  flex-grow: 1;
   width: 100%;
   background-color: white;
   border-collapse: collapse;
@@ -45,10 +49,25 @@ table {
 
 th,
 td {
-  height: 2.3rem;
+  /* height: 2.3rem; */
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
+}
+
+.time-cell {
+  font-weight: 700;
+}
+
+#schedule th,
+#schedule td {
+  border: 1px solid #dcdcdc;
+  padding: 8px;
+}
+
+#schedule th {
+  background-color: #c4c4c4;
+  text-align: left;
 }
 
 .current-day,
@@ -73,6 +92,7 @@ td {
 }
 
 footer {
-  padding: 2rem;
-  background-color: yellowgreen;
+  flex-shrink: 0;
+  text-align: center;
+  padding: 1rem;
 }

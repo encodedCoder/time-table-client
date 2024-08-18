@@ -3,17 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weekly Schedule</title>
+    <title>Time Table - encodedCoder</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="https://lh3.googleusercontent.com/a/ACg8ocIxVDPHN0T-lwBgQuTwXHyWHD2Wy55-V-IbEaOFydzxTYkTnkYW=s360-c-no" type="image/x-icon"> <!-- Default favicon -->
-    <link rel="icon" href="https://lh3.googleusercontent.com/a/ACg8ocIxVDPHN0T-lwBgQuTwXHyWHD2Wy55-V-IbEaOFydzxTYkTnkYW=s360-c-no" type="image/png">     <!-- PNG format -->
-    <link rel="icon" href="https://lh3.googleusercontent.com/a/ACg8ocIxVDPHN0T-lwBgQuTwXHyWHD2Wy55-V-IbEaOFydzxTYkTnkYW=s360-c-no" type="image/svg+xml"> <!-- SVG format -->
-
+    <link
+      rel="icon"
+      href="https://lh3.googleusercontent.com/a/ACg8ocIxVDPHN0T-lwBgQuTwXHyWHD2Wy55-V-IbEaOFydzxTYkTnkYW=s360-c-no"
+      type="image/x-icon"
+    />
+    <!-- Default favicon -->
+    <link
+      rel="icon"
+      href="https://lh3.googleusercontent.com/a/ACg8ocIxVDPHN0T-lwBgQuTwXHyWHD2Wy55-V-IbEaOFydzxTYkTnkYW=s360-c-no"
+      type="image/png"
+    />
+    <!-- PNG format -->
+    <link
+      rel="icon"
+      href="https://lh3.googleusercontent.com/a/ACg8ocIxVDPHN0T-lwBgQuTwXHyWHD2Wy55-V-IbEaOFydzxTYkTnkYW=s360-c-no"
+      type="image/svg+xml"
+    />
+    <!-- SVG format -->
   </head>
   <body>
     <header>
-      <img src="https://lh3.googleusercontent.com/a/ACg8ocIxVDPHN0T-lwBgQuTwXHyWHD2Wy55-V-IbEaOFydzxTYkTnkYW=s360-c-no" alt="Ropar Logo">
-      <h3 id="current-date-time"><You Current Date and Time Here></h3>
+      <div id="profile-image-container">
+        <img
+          src="https://lh3.googleusercontent.com/a/ACg8ocIxVDPHN0T-lwBgQuTwXHyWHD2Wy55-V-IbEaOFydzxTYkTnkYW=s360-c-no"
+          alt="Ropar Logo"
+        />
+        <div><a href="https://github.com/encodedCoder">encodedcoder</a></div>
+      </div>
+      <div id="current-date-time-container">
+        <h3 id="current-date-time">Current Date and Time Here</h3>
+      </div>
     </header>
     <table id="schedule">
       <thead>
@@ -28,7 +50,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>09</td>
+          <td class="time-cell">09</td>
           <td></td>
           <td></td>
           <td></td>
@@ -36,7 +58,7 @@
           <td></td>
         </tr>
         <tr>
-          <td>10</td>
+          <td class="time-cell">10</td>
           <td></td>
           <td></td>
           <td></td>
@@ -44,7 +66,7 @@
           <td>DSML</td>
         </tr>
         <tr>
-          <td>11</td>
+          <td class="time-cell">11</td>
           <td>ANN</td>
           <td>ANN</td>
           <td>ANN</td>
@@ -52,7 +74,7 @@
           <td></td>
         </tr>
         <tr>
-          <td>12</td>
+          <td class="time-cell">12</td>
           <td></td>
           <td></td>
           <td></td>
@@ -60,7 +82,7 @@
           <td></td>
         </tr>
         <tr>
-          <td>13</td>
+          <td class="time-cell">13</td>
           <td></td>
           <td></td>
           <td></td>
@@ -68,7 +90,7 @@
           <td></td>
         </tr>
         <tr>
-          <td>14</td>
+          <td class="time-cell">14</td>
           <td>DSML</td>
           <td></td>
           <td></td>
@@ -76,7 +98,7 @@
           <td></td>
         </tr>
         <tr>
-          <td>15</td>
+          <td class="time-cell">15</td>
           <td></td>
           <td></td>
           <td>DSA</td>
@@ -84,7 +106,7 @@
           <td>DSA</td>
         </tr>
         <tr>
-          <td>16</td>
+          <td class="time-cell">16</td>
           <td></td>
           <td></td>
           <td></td>
@@ -96,9 +118,11 @@
 
     <footer>
       <div>
-        &copy 2024, <a href="https://github.com/encodedCoder">encodedcoder</a> (Suresh)
+        &copy 2024,
+        <a href="https://github.com/encodedCoder">encodedcoder</a> (Suresh)
       </div>
-      <div>Wanna see the actual code, access
+      <div>
+        Wanna see the actual code, access
         <a href="https://github.com/encodedCoder/time_table/">Source Code</a>
         here.
       </div>

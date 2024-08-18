@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function highlightCurrentDay() {
     const currentDay = getCurrentDay();
+    // const currentDay = 2;
     if (currentDay === -1) return;
     const dayHeader = scheduleTable.querySelector(
       `th:nth-child(${currentDay + 2})`
@@ -81,7 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function highlightCurrentTimeSlot() {
-    const currentTimeSlot = getCurrentTimeSlot();
+    // const currentTimeSlot = getCurrentTimeSlot();
+    // const currentTimeSlot = 2;
     if (currentTimeSlot !== -1) {
       const currentDay = getCurrentDay();
       const timeSlotCell = scheduleTable.querySelector(
@@ -149,10 +151,10 @@ function updateTime() {
   // Change background color if the day is Saturday or Sunday
   // day = "Monday";
   if (day === "Sat" || day === "Sun") {
-    dateTimeElement.style.backgroundColor = "red";
+    dateTimeElement.style.backgroundColor = "rgb(212, 86, 28)";
   } else {
     // Reset to default if not
-    dateTimeElement.style.backgroundColor = "green";
+    dateTimeElement.style.backgroundColor = "rgb(103, 138, 32)";
   }
 }
 
