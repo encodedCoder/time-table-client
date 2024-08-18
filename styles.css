@@ -1,15 +1,49 @@
 /* styles.css */
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  /* height: 100%; */
+}
+
+html,
+body {
+  height: 100%; /* Ensure the html and body elements cover the full height */
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
+}
+
+header {
+  background-color: yellowgreen;
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  /* margin-bottom: 1rem; */
+}
+
+header img {
+  padding: 1rem;
+  height: 6rem;
+  /* margin-right: 20px; */
+}
+
+header h3 {
+  margin: 0; /* Remove default margin of h3 to avoid extra space */
+}
+
+#current-date-time {
+  padding: 2rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
 }
 
 table {
   width: 100%;
+  background-color: white;
   border-collapse: collapse;
 }
 
 th,
 td {
+  height: 2.3rem;
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
@@ -26,7 +60,7 @@ td {
     background-color: yellow;
   }
   33% {
-    background-color: lightgreen;
+    background-color: rgb(201, 28, 25);
   }
   66% {
     background-color: lightblue;
@@ -34,4 +68,9 @@ td {
   100% {
     background-color: yellow;
   }
+}
+
+footer {
+  padding: 2rem;
+  background-color: yellowgreen;
 }

@@ -11,6 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   const scheduleTable = document.getElementById("schedule");
 
+  // // Add the current day and time at the top of the page
+  // const currentDateTime = document.getElementById("current-date-time");
+  // function getCurrentDateTime() {
+  //   const now = new Date();
+  //   // const currentDateTime = now.getTime();
+  //   // return currentDateTime;
+  //   return new Date();
+  // }
+  // currentDateTime.innerHTML = getCurrentDateTime();
+
   function getCurrentIST() {
     // Convert the current time to UTC
     const now = new Date();
@@ -24,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getCurrentDay() {
     const now = getCurrentIST();
-    console.log(now);
-    console.log(now.getDay());
+    // console.log(now);
+    // console.log(now.getDay());
     return now.getDay() - 1;
   }
 
@@ -58,12 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return i;
       }
     }
-
     return -1;
   }
 
   function highlightCurrentDay() {
     const currentDay = getCurrentDay();
+    if (currentDay === -1) return;
     const dayHeader = scheduleTable.querySelector(
       `th:nth-child(${currentDay + 2})`
     );
@@ -98,3 +108,61 @@ document.addEventListener("DOMContentLoaded", () => {
     highlightCurrentTimeSlot();
   }, 60000); // 60000 milliseconds = 1 minute
 });
+
+function updateTime() {
+  // Create a new Date object
+  let currentDate = new Date();
+
+  // Get the current time (hours, minutes, and seconds)
+  let hours = currentDate.getHours();
+  let minutes = currentDate.getMinutes();
+  let seconds = currentDate.getSeconds();
+
+  // Format time to be more readable (e.g., 09:05:09 instead of 9:5:9)
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  let time = hours + ":" + minutes + ":" + seconds;
+
+  // Get the current day (0 = Sunday, 1 = Monday, etc.)
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[currentDate.getDay()];
+
+  // Get the current date (day of the month, month, year)
+  let date = currentDate.getDate();
+  let month = currentDate.getMonth() + 1; // Months are zero-based
+  let year = currentDate.getFullYear();
+
+  // Format the date to be more readable (e.g., 09/08/2024 instead of 9/8/2024)
+  date = date < 10 ? "0" + date : date;
+  month = month < 10 ? "0" + month : month;
+
+  let fullDate = date + "/" + month + "/" + year;
+
+  // Combine the time, day, and date into a single string
+  let dateTimeString = time + " || " + day + " || " + fullDate;
+
+  // Update the content of the element with id "current-date-time"
+  let dateTimeElement = document.getElementById("current-date-time");
+  dateTimeElement.innerText = dateTimeString;
+  // Change background color if the day is Saturday or Sunday
+  // day = "Monday";
+  if (day === "Saturday" || day === "Sunday") {
+    dateTimeElement.style.backgroundColor = "red";
+  } else {
+    // Reset to default if not
+    dateTimeElement.style.backgroundColor = "green";
+  }
+}
+
+// Update the time every second
+setInterval(updateTime, 1000);
