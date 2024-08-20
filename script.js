@@ -96,10 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const timeSlotHeader = scheduleTable.querySelector(
         `tbody tr:nth-child(${currentTimeSlot + 1}) td:first-child`
       );
-      timeSlotCell.classList.add("current-time");
+
+      // Only highlight if the cell has content
       timeSlotHeader.classList.add("current-time");
-      // console.log(timeSlotCell);
-      // console.log(timeSlotHeader);
+      if (timeSlotCell && timeSlotCell.textContent.trim() !== "") {
+        timeSlotCell.classList.add("current-time");
+      } else {
+        timeSlotCell.classList.add("static-color");
+      }
     }
   }
 

@@ -74,12 +74,17 @@ td {
 #schedule th,
 #schedule td {
   border: 1px solid #dcdcdc;
-  padding: 8px;
+  /* padding: 8px; */
 }
 
 #schedule th {
   background-color: #c4c4c4;
   text-align: left;
+}
+
+/* Static Color if Cell is empty */
+.static-color {
+  background-color: #717171;
 }
 
 footer {
