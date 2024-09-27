@@ -1,4 +1,84 @@
-// script.js
+const YOUR_PUBLIC_VAPID_KEY =
+  "BFVGMWw3j6V3EHw9ulQRNNPRd0taFpzWW5zBxId6HoWIxk8xYNNYoXmfyPFoKJt0lwuYoLBnUZiJLKJBb1tliA8";
+
+if ("serviceWorker" in navigator && "PushManager" in window) {
+  navigator.serviceWorker
+    .register("/service-worker.js")
+    .then(function (swReg) {
+      console.log("Service Worker is registered", swReg);
+      initializePushNotifications(swReg);
+    })
+    .catch(function (error) {
+      console.error("Service Worker Error", error);
+    });
+}
+
+function initializePushNotifications(swReg) {
+  // Request notification permission
+  if (Notification.permission !== "granted") {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        subscribeUser(swReg);
+      }
+    });
+  } else {
+    subscribeUser(swReg);
+  }
+}
+
+function subscribeUser(swReg) {
+  const applicationServerKey = urlB64ToUint8Array(YOUR_PUBLIC_VAPID_KEY);
+  swReg.pushManager
+    .subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: applicationServerKey,
+    })
+    .then(function (subscription) {
+      console.log("User is subscribed:", subscription);
+      sendSubscriptionToServer(subscription);
+    })
+    .catch(function (err) {
+      console.log("Failed to subscribe the user: ", err);
+    });
+}
+
+function sendSubscriptionToServer(subscription) {
+  // Send the subscription details to your server
+  fetch("http://localhost:3000/subscribe", {
+    method: "POST",
+    body: JSON.stringify(subscription),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Bad status code from server.");
+      }
+      return response.json();
+    })
+    .then(function (responseData) {
+      if (!(responseData && responseData.success)) {
+        throw new Error("Bad response from server.");
+      }
+    });
+}
+
+function urlB64ToUint8Array(base64String) {
+  const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding)
+    .replace(/\-/g, "+")
+    .replace(/_/g, "/");
+
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const daysOfWeek = [
     "Sunday",
@@ -10,16 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "Saturday",
   ];
   const scheduleTable = document.getElementById("schedule");
-
-  // // Add the current day and time at the top of the page
-  // const currentDateTime = document.getElementById("current-date-time");
-  // function getCurrentDateTime() {
-  //   const now = new Date();
-  //   // const currentDateTime = now.getTime();
-  //   // return currentDateTime;
-  //   return new Date();
-  // }
-  // currentDateTime.innerHTML = getCurrentDateTime();
 
   function getCurrentIST() {
     // Convert the current time to UTC
@@ -34,8 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getCurrentDay() {
     const now = getCurrentIST();
-    // console.log(now);
-    // console.log(now.getDay());
     return now.getDay() - 1;
   }
 
@@ -73,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function highlightCurrentDay() {
     const currentDay = getCurrentDay();
-    // const currentDay = 2;
     if (currentDay !== -1) {
       const dayHeader = scheduleTable.querySelector(
         `th:nth-child(${currentDay + 2})`
@@ -84,10 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function highlightCurrentTimeSlot() {
     const currentTimeSlot = getCurrentTimeSlot();
-    // const currentTimeSlot = 2;
     if (currentTimeSlot !== -1) {
       const currentDay = getCurrentDay();
-      // const currentDay = 0;
       const timeSlotCell = scheduleTable.querySelector(
         `tbody tr:nth-child(${currentTimeSlot + 1}) td:nth-child(${
           currentDay + 2
@@ -166,7 +231,6 @@ function updateTime() {
   currentDateElement.innerText = fullDate;
 
   // Change background color if the day is Saturday or Sunday
-  // day = "Monday";
   if (day === "Sat" || day === "Sun") {
     currentDateTimeContainer.style.backgroundColor = "rgb(212, 86, 28)";
   } else {
