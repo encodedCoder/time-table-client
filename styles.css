@@ -53,7 +53,8 @@ header div img {
 table {
   flex-grow: 1;
   width: 100%;
-  background-color: white;
+  /* background-color: white; */
+  background-color: #dde5ff;
   border-collapse: collapse;
   text-align: center;
 }
@@ -61,7 +62,7 @@ table {
 th,
 td {
   /* height: 2.3rem; */
-  border: 1px solid #ddd;
+  border: 1px solid #5d5d5d;
   padding: 8px;
   text-align: center;
 }
